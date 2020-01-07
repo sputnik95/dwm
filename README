@@ -1,3 +1,12 @@
+This is a build of dwm v6.2 I use. All of the patches applied are inside 'patches' directory.
+
+This version has modified keybindings, tags, bar colors, per-app rules and layouts, so be sure to edit 'config.h' to fit your needs. You'd probably need to rebind special keys to match your keysims (find out yours using 'xev' command) and change '*termcmd[]' command if you're not using 'urxvt'.
+
+There's also a sloppily-put-together shell script I use for status updates, check that one out as well.
+
+The rest of this README was originally shipped with the package:
+
+
 dwm - dynamic window manager
 ============================
 dwm is an extremely fast, small, and dynamic window manager for X.

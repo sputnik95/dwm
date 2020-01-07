@@ -1,15 +1,9 @@
 #!/bin/bash
 
-FG_DEFAULT='#959595'
-BG_DEFAULT='#101010'
-RED='#b82525'
-YELLOW='#b0a225'
-SEPARATOR='#545454'
-
 print_date() {
 	FORMAT="%R %b %d %a"
 	DATE=`date "+${FORMAT}"`
-	echo -n "${DATE}"
+	echo "${DATE}"
 }
 
 separate() {
@@ -28,29 +22,27 @@ print_bat() {
     BAT_LEVEL=`cat /sys/class/power_supply/BAT0/capacity`
     OUTPUT="${CH_STATUS}${BAT_LEVEL}%"
     if [[ $BAT_LEVEL > '65' && $BAT_LEVEL < '99' && $CH_STATUS == 'dis.' ]]; then
-        OUTPUT="${CH_STATUS}${BAT_LEVEL}%)"
+        OUTPUT="\x03${CH_STATUS}${BAT_LEVEL}%\x01"
     fi
     if [[ $BAT_LEVEL -le '65' && $CH_STATUS == 'dis.' ]]; then
-        OUTPUT="${CH_STATUS}${BAT_LEVEL}%"
+        OUTPUT="\x04${CH_STATUS}${BAT_LEVEL}%\x01"
     fi
-    echo -n "${OUTPUT}"
+    echo -e "${OUTPUT}"
 }
 
 print_temp() {
     CUR_TEMP=`cat /sys/devices/platform/thinkpad_hwmon/hwmon/hwmon0/temp1_input | rev | cut -c4- | rev`
-    #CUR_LOAD=`top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}'`
     if [[ $CUR_TEMP > '70' ]]; then
         CUR_TEMP="${CUR_TEMP}°C"
     fi
     OUTPUT="${CUR_TEMP}°C"
     if [[ $CUR_TEMP > '55' && $CUR_TEMP < '65' ]]; then
-        #OUTPUT="${CUR_LOAD}/^fg(${YELLOW})${CUR_TEMP}C^fg(${DEFAULT_FG})"
-        OUTPUT="${CUR_TEMP}°C"
+        OUTPUT="\x03${CUR_TEMP}°C\x01"
     fi
     if [[ $CUR_TEMP -ge '65' ]]; then
-        OUTPUT="${CUR_TEMP}°C"
+        OUTPUT="\x04${CUR_TEMP}°C\x01"
     fi
-    echo -n "${OUTPUT}"
+    echo -e "${OUTPUT}"
 }
 
 print_vol() {
@@ -188,9 +180,8 @@ print_netspeed() {
     fi
 }
 
-SLEEP_SEC=1  # set bar_delay = 5 in /etc/spectrwm.conf
-#loops forever outputting a line every SLEEP_SEC secs
+SLEEP_SEC=1
 while :; do
     xsetroot -name "$(print_song) $(print_netspeed) $(print_temp) $(separate) $(print_vol) $(separate) $(print_layout) $(separate) $(print_bat) $(separate) $(print_date)"
-        sleep $SLEEP_SEC
+    sleep $SLEEP_SEC
 done
