@@ -1,5 +1,7 @@
 #!/bin/bash
 
+trap 'show_status' 5
+
 print_date() {
 	FORMAT="%R %b %d %a"
 	DATE=`date "+${FORMAT}"`
@@ -179,9 +181,14 @@ print_netspeed() {
       echo -n "${tx_kib}K |"
     fi
 }
-
-SLEEP_SEC=1
-while :; do
+show_status() {
     xsetroot -name "$(print_song) $(print_netspeed) $(print_temp) $(separate) $(print_vol) $(separate) $(print_layout) $(separate) $(print_bat) $(separate) $(print_date)"
-    sleep $SLEEP_SEC
+    wait
+}
+
+SLEEP_SEC=5
+while :; do
+    show_status
+    sleep $SLEEP_SEC &
+    wait
 done

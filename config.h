@@ -54,7 +54,7 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.4; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.5; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
@@ -89,13 +89,14 @@ static const char *dmenucmd[]    = { "dmenu_run", "-m", dmenumon, "-fn", dmenufo
 static const char *termcmd[]     = { "urxvt", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "urxvt", "-title", scratchpadname, "-geometry", "120x34", NULL };
-static const char *cmusstop[]    = { "cmus-remote", "-s", NULL };
-static const char *cmusplay[]    = { "cmus-remote", "-u", NULL };
-static const char *cmusnext[]    = { "cmus-remote", "-n", NULL };
-static const char *cmusprev[]    = { "cmus-remote", "-r", NULL };
-static const char *volplus[]     = { "amixer", "set", "Master", "5%+", NULL };
-static const char *volminus[]    = { "amixer", "set", "Master", "5%-", NULL };
-static const char *voltoggle[]   = { "amixer", "set", "Master", "toggle", NULL };
+static const char *cmusstop[]    = { "dwmkeys", "musstop", NULL };
+static const char *cmusplay[]    = { "dwmkeys", "mustoggle", NULL };
+static const char *cmusnext[]    = { "dwmkeys", "musnext", NULL };
+static const char *cmusprev[]    = { "dwmkeys", "musprev", NULL };
+static const char *volplus[]     = { "dwmkeys", "raise", NULL };
+static const char *volminus[]    = { "dwmkeys", "lower", NULL };
+static const char *voltoggle[]   = { "dwmkeys", "mute", NULL };
+static const char *statusupdate[]= { "dwmkeys", "update", NULL };
 static const char *screensaver[] = { "i3lockr", "--blur=75", NULL };
 static const char *screenconf[]  = { "lxrandr", NULL };
 static const char *rofimenu[]    = { "rofi", "-show", "combi", NULL };
@@ -149,6 +150,7 @@ static Key keys[] = {
 	{ 0,                            0x1008ff13, spawn,   {.v = volplus } },
 	{ 0,                            0x1008ff11, spawn,   {.v = volminus } },
 	{ 0,                            0x1008ff12, spawn,   {.v = voltoggle } },
+	{ 0,                            0xfe08, spawn,   {.v = statusupdate } },
 	{ 0,                            0x1008ff2d, spawn,   {.v = screensaver } },
 	{ 0,                            0x1008ff59, spawn,   {.v = screenconf } },
 	{ 0,                            0x1008ff41, spawn,   {.v = startmenu } },
