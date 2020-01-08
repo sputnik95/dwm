@@ -101,7 +101,7 @@ static const char *screensaver[] = { "i3lockr", "--blur=75", NULL };
 static const char *screenconf[]  = { "lxrandr", NULL };
 static const char *rofimenu[]    = { "rofi", "-show", "combi", NULL };
 static const char *startmenu[]   = { "bash", "/home/aezakmi/Apps/scripts/rofi/rofi-bangs.sh", NULL };
-static const char *wallpaper[]   = { "bash", "/home/aezakmi/.local/scripts/fehbg.sh", "&", NULL };
+static const char *wallpaper[]   = { "bash", "fehbg", "&", NULL };
 
 
 #include "movestack.c"
