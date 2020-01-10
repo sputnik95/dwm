@@ -12,20 +12,24 @@ enum showtab_modes { showtab_never, showtab_auto, showtab_nmodes, showtab_always
 static const int showtab			= showtab_auto;        /* Default tab bar show mode */
 static const int toptab				= True;               /* False means bottom tab bar */
 
-static const char *fonts[]     = { "terminus:lang=ru:size=9" };
+/* static const char *fonts[]     = { "terminus:lang=ru:size=9" }; */
+static const char *fonts[]     = { "cure:lang=ru:size=8" };
 static const char dmenufont[]  = "terminus:lang=ru:size=9";
 static const char col_gray1[]  = "#111111";
 static const char col_gray2[]  = "#222222";
 static const char col_gray3[]  = "#8b8792";
-static const char col_gray4[]  = "#eeeeee";
+static const char col_gray4[]  = "#cfcfcf";
 static const char col_cyan[]   = "#005577";
 static const char col_red[]    = "#b82525";
 static const char col_yellow[] = "#b0a225";
+static const char mel_pink[]   = "#8D5972";
+static const char mel_cyan[]   = "#598D74";
+static const char mel_blue[]   = "#59728D";
 static const char *colors[][3] = {
 	                  /* fg           bg       border */
-	[SchemeNorm] = { col_gray3   , col_gray1, col_gray1 } ,
-	[SchemeSel] = { col_gray4    , col_gray1, col_cyan }  ,
-    [SchemeWarn] =	 { col_yellow, col_gray1, col_yellow },
+	[SchemeNorm]  =  { col_gray3 , col_gray1, col_gray1 } ,
+	[SchemeSel]   =  { col_gray4 , col_gray1, mel_blue }  ,
+    [SchemeWarn]  =	 { col_yellow, col_gray1, col_yellow },
 	[SchemeUrgent]=	 { col_red   , col_gray1, col_red }   ,
 };
 
