@@ -2,7 +2,7 @@
 
 /* appearance */
 static const unsigned int borderpx = 1; /* border pixel of windows */
-static const unsigned int snap = 50; /* snap pixel */
+static const unsigned int snap = 20; /* snap pixel */
 static const int showbar = 1; /* 0 means no bar */
 static const int topbar  = 1; /* 0 means bottom bar */
 /*  Display modes of the tab bar: never shown, always shown, shown only in  */
@@ -28,7 +28,7 @@ static const char mel_blue[]   = "#59728D";
 static const char *colors[][3] = {
 	                  /* fg           bg       border */
 	[SchemeNorm]  =  { col_gray3 , col_gray1, col_gray1 } ,
-	[SchemeSel]   =  { col_gray4 , col_gray1, mel_blue }  ,
+	[SchemeSel]   =  { col_gray4 , col_gray1, mel_cyan }  ,
     [SchemeWarn]  =	 { col_yellow, col_gray1, col_yellow },
 	[SchemeUrgent]=	 { col_red   , col_gray1, col_red }   ,
 };
@@ -126,10 +126,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, cyclelayout,    {.i = +1 } },
 	{ MODKEY,                       XK_Left,   setmfact,       {.f = -0.01} },
 	{ MODKEY,                       XK_Right,  setmfact,       {.f = +0.01} },
-    { MODKEY|ShiftMask,             XK_Down,   movestack,      {.i = +1 } },
-    { MODKEY|ShiftMask,             XK_Up,     movestack,      {.i = -1 } },
-    { MODKEY|ControlMask,           XK_Down,   setcfact,       {.f = +0.25} },
-    { MODKEY|ControlMask,           XK_Up,     setcfact,       {.f = -0.25} },
+    { MODKEY|ControlMask,           XK_Down,   movestack,      {.i = +1 } },
+    { MODKEY|ControlMask,           XK_Up,     movestack,      {.i = -1 } },
+    { MODKEY|ShiftMask,             XK_Down,   setcfact,       {.f = +0.25} },
+    { MODKEY|ShiftMask,             XK_Up,     setcfact,       {.f = -0.25} },
 	{ MODKEY,                       XK_w,      zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_k,      killclient,     {0} },
