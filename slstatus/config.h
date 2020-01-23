@@ -67,7 +67,7 @@ static const struct arg args[] = {
 	{ netspeed_tx, "%s | ",           "wlp3s0" },
 	{ battery_state,   "%s",           "BAT0" },
 	{ battery_perc,   "%s | ",           "BAT0" },
-	{ vol_perc,   "VOL.%s | ",           "/dev/mixer" },
+	{ vol_perc,   "🔊%s | ",           "/dev/mixer" },
 	{ cpu_perc,   "%s/",           "" },
 	{ temp,     "%s°C | ",        "/sys/devices/platform/thinkpad_hwmon/hwmon/hwmon3/temp1_input" },
 	{ keymap,   "%s | ",           "" },
