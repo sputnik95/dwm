@@ -63,13 +63,13 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-	{ netspeed_rx, "%s ",           "wls1" },
-	{ netspeed_tx, "%s | ",           "wls1" },
+	{ netspeed_rx, "%s ",           "wlp3s0" },
+	{ netspeed_tx, "%s | ",           "wlp3s0" },
 	{ battery_state,   "%s",           "BAT0" },
 	{ battery_perc,   "%s | ",           "BAT0" },
-	{ vol_perc,   "🔊%s | ",           "/dev/mixer" },
+	{ vol_perc,   "VOL.%s | ",           "/dev/mixer" },
 	{ cpu_perc,   "%s/",           "" },
-	{ temp,     "%s°C | ",        "/sys/devices/platform/thinkpad_hwmon/hwmon/hwmon0/temp1_input" },
+	{ temp,     "%s°C | ",        "/sys/devices/platform/thinkpad_hwmon/hwmon/hwmon3/temp1_input" },
 	{ keymap,   "%s | ",           "" },
 	{ datetime, "%s",           "%R %b %d %a" },
 };
