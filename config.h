@@ -14,7 +14,8 @@ static const int toptab             = True;               /* False means bottom 
 
 /* static const char *fonts[]     = { "terminus:lang=ru:size=9" }; */
 static const char *fonts[]     = { "cure:lang=ru:size=8" };
-static const char dmenufont[]  = "terminus:lang=ru:size=9";
+static const char dmenufont[]  = "cure:lang=ru:size=8";
+/* static const char dmenufont[]  = "terminus:lang=ru:size=9"; */
 static const char col_gray1[]  = "#111111";
 static const char col_gray2[]  = "#222222";
 static const char col_gray3[]  = "#8b8792";
@@ -112,8 +113,8 @@ static const char *wallpaper[]   = { "bash", "fehbg", "&", NULL };
 #include <X11/XF86keysym.h>
 static Key keys[] = {
     /* modifier                     key        function        argument */
+    { MODKEY,                       XK_e,      spawn,          {.v = dmenucmd } },
     { MODKEY,                       XK_d,      spawn,          {.v = rofimenu } },
-    { MODKEY|ShiftMask,             XK_d,      spawn,          {.v = dmenucmd } },
     { MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
     { MODKEY,                       XK_x,      togglescratch,  {.v = scratchpadcmd } },
     { MODKEY,                       XK_b,      togglebar,      {0} },
