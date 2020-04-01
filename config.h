@@ -5,6 +5,9 @@ static const unsigned int borderpx = 1; /* border pixel of windows */
 static const unsigned int snap = 20; /* snap pixel */
 static const int showbar = 1; /* 0 means no bar */
 static const int topbar  = 1; /* 0 means bottom bar */
+/* False means using the scroll wheel on a window will not change focus */
+static const Bool focusonwheelscroll = False;
+
 /*  Display modes of the tab bar: never shown, always shown, shown only in  */
 /*  monocle mode in the presence of several windows.                        */
 /*  Modes after showtab_nmodes are disabled.                                */
@@ -50,7 +53,6 @@ static const Rule rules[] = {
     { "Spacefm",         NULL,       NULL,       1 << 1,        1,            1,           -1 },
     { "DBeaver",         NULL,       NULL,       1 << 1,        1,            0,           -1 },
     { "Postman",         NULL,       NULL,       1 << 1,        1,            0,           -1 },
-    { "KeePassXC",       NULL,       NULL,       1 << 1,        1,            0,           -1 },
     /*  web browsers  */
     { "Firefox",         NULL,       NULL,       1 << 2,        1,            0,           -1 },
     { "Chromium",        NULL,       NULL,       1 << 2,        1,            0,           -1 },
@@ -100,7 +102,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2]          = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[]    = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[]    = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_gray3, "-sf", col_gray1, NULL };
 static const char *termcmd[]     = { "urxvt", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "urxvt", "-title", scratchpadname, "-geometry", "120x34", NULL };
@@ -108,10 +110,14 @@ static const char *cmusstop[]    = { "dwmkeys", "musstop", NULL };
 static const char *cmusplay[]    = { "dwmkeys", "mustoggle", NULL };
 static const char *cmusnext[]    = { "dwmkeys", "musnext", NULL };
 static const char *cmusprev[]    = { "dwmkeys", "musprev", NULL };
+static const char *brightup[]    = { "dwmkeys", "brightup", NULL };
+static const char *brightdn[]    = { "dwmkeys", "brightdn", NULL };
 static const char *volplus[]     = { "dwmkeys", "raise", NULL };
 static const char *volminus[]    = { "dwmkeys", "lower", NULL };
 static const char *voltoggle[]   = { "dwmkeys", "mute", NULL };
 static const char *statusupdate[]= { "dwmkeys", "update", NULL };
+static const char *sshot_full[]  = { "dwmkeys", "screenshot_full", NULL };
+static const char *sshot_part[]  = { "dwmkeys", "screenshot_part", NULL };
 static const char *screensaver[] = { "i3lockr", "--blur=75", NULL };
 static const char *screenconf[]  = { "lxrandr", NULL };
 static const char *rofimenu[]    = { "rofi", "-show", "combi", NULL };
@@ -169,6 +175,10 @@ static Key keys[] = {
     { 0,                            0x1008ff2d, spawn,   {.v = screensaver } },
     { 0,                            0x1008ff59, spawn,   {.v = screenconf } },
     { 0,                            0x1008ff41, spawn,   {.v = startmenu } },
+    { 0,                            0x1008ff02, spawn,   {.v = brightup } },
+    { 0,                            0x1008ff03, spawn,   {.v = brightdn } },
+    { 0,                            0xff61,     spawn,   {.v = sshot_full } },
+    { ShiftMask,                    XK_Print,   spawn,   {.v = sshot_part } },
     { MODKEY,                       XK_slash,   spawn,   {.v = wallpaper } },
     TAGKEYS(                        XK_1,                      1)
     TAGKEYS(                        XK_2,                      2)

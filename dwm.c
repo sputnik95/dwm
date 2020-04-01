@@ -274,7 +274,6 @@ static void (*handler[LASTEvent]) (XEvent *) = {
 	[ConfigureRequest] = configurerequest,
 	[ConfigureNotify] = configurenotify,
 	[DestroyNotify] = destroynotify,
-	[EnterNotify] = enternotify,
 	[Expose] = expose,
 	[FocusIn] = focusin,
 	[KeyPress] = keypress,
@@ -520,6 +519,9 @@ buttonpress(XEvent *e)
 	}
 	else if((c = wintoclient(ev->window))) {
 		focus(c);
+		if (focusonwheelscroll || (ev->button != Button4 && ev->button != Button5))
+			focus(c);
+		XAllowEvents(dpy, ReplayPointer, CurrentTime);
 		restack(selmon);
 		XAllowEvents(dpy, ReplayPointer, CurrentTime);
 		click = ClkClientWin;
@@ -1210,7 +1212,7 @@ grabbuttons(Client *c, int focused)
 					XGrabButton(dpy, buttons[i].button,
 						buttons[i].mask | modifiers[j],
 						c->win, False, BUTTONMASK,
-						GrabModeAsync, GrabModeSync, None, None);
+						GrabModeSync, GrabModeSync, None, None);
 	}
 }
 

@@ -31,6 +31,20 @@ case "$1" in
   "update")
     pkill -SIGTRAP dwmstatus
     ;;
+  "brightup")
+    sudo xbacklight -inc 5
+    ;;
+  "brightdn")
+    sudo xbacklight -dec 5
+    ;;
+  "screenshot_part")
+    sleep 0.2
+    scrot -s ~/Pictures/screenshots/$(date +%F).png
+    ;;
+  "screenshot_full")
+    sleep 0.2
+    scrot ~/Pictures/screenshots/$(date +%F).png
+    ;;
   *)
     exit 1
     ;;
