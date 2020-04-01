@@ -43,19 +43,29 @@ static const Rule rules[] = {
      *  WM_NAME(STRING) = title
      */
     /* class      instance    title       tags mask     iscentered    isfloating   monitor */
-    { "Viewnior",    NULL,       NULL,       0,             1,            1,           -1 },
-    { "feh",         NULL,       NULL,       0,             1,            1,           -1 },
-    { "Spacefm",     NULL,       NULL,       1 << 1,        1,            1,           -1 },
-    { "Firefox",     NULL,       NULL,       1 << 2,        1,            0,           -1 },
-    { "Chromium",    NULL,       NULL,       1 << 2,        1,            0,           -1 },
-    { "Pale moon",   NULL,       NULL,       1 << 2,        1,            0,           -1 },
-    { "Pale moon",   NULL, "Pale Moon Preferences",1 << 2,  1,            1,           -1 },
-/*  { "URxvt",       NULL,       NULL,       1 << 3,        0,            0,           -1 }, */
-    { "TelegramDesktop",NULL,    NULL,       1 << 4,        1,            0,           -1 },
-    { "Evince",      NULL,       NULL,       1 << 5,        1,            0,           -1 },
-    { "Zathura",     NULL,       NULL,       1 << 5,        1,            0,           -1 },
-    { "smplayer",    NULL,       NULL,       1 << 6,        1,            0,           -1 },
-    { "mpv",         NULL,       NULL,       1 << 6,        1,            0,           -1 },
+    /*  common  */
+    { "Viewnior",        NULL,       NULL,       0,             1,            1,           -1 },
+    { "feh",             NULL,       NULL,       0,             1,            1,           -1 },
+    /*  var software  */
+    { "Spacefm",         NULL,       NULL,       1 << 1,        1,            1,           -1 },
+    { "DBeaver",         NULL,       NULL,       1 << 1,        1,            0,           -1 },
+    { "Postman",         NULL,       NULL,       1 << 1,        1,            0,           -1 },
+    { "KeePassXC",       NULL,       NULL,       1 << 1,        1,            0,           -1 },
+    /*  web browsers  */
+    { "Firefox",         NULL,       NULL,       1 << 2,        1,            0,           -1 },
+    { "Chromium",        NULL,       NULL,       1 << 2,        1,            0,           -1 },
+    { "Pale moon",       NULL,       NULL,       1 << 2,        1,            0,           -1 },
+    { "Pale moon",       NULL, "Pale Moon Preferences",1 << 2,  1,            1,           -1 },
+    { "Brave-browser",   NULL,       NULL,       1 << 2,        1,            0,           -1 },
+    /*  messaging  */
+    { "TelegramDesktop", NULL,       NULL,       1 << 4,        1,            0,           -1 },
+    /*  documents  */
+    { "Evince",          NULL,       NULL,       1 << 5,        1,            0,           -1 },
+    { "Zathura",         NULL,       NULL,       1 << 5,        1,            0,           -1 },
+    /*  media  */
+    { "smplayer",        NULL,       NULL,       1 << 6,        1,            1,           -1 },
+    { "Clementine",      NULL,       NULL,       1 << 6,        1,            0,           -1 },
+    { "mpv",             NULL,       NULL,       1 << 6,        1,            1,           -1 },
 };
 
 /* layout(s) */
