@@ -47,6 +47,7 @@ static const Rule rules[] = {
      */
     /* class      instance    title       tags mask     iscentered    isfloating   monitor */
     /*  common  */
+    { "stalonetray",     NULL,       NULL,       1 << 1,        0,            1,           -1 },
     { "Viewnior",        NULL,       NULL,       0,             1,            1,           -1 },
     { "feh",             NULL,       NULL,       0,             1,            1,           -1 },
     /*  var software  */
@@ -70,7 +71,7 @@ static const Rule rules[] = {
     { "mpv",             NULL,       NULL,       1 << 6,        1,            1,           -1 },
 };
 
-static const char systray_app_class[] = "stalonetray";
+static const char systray_app_class[] = "trayer";
 
 /* layout(s) */
 static const float mfact     = 0.5; /* factor of master area size [0.05..0.95] */
