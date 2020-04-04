@@ -70,6 +70,8 @@ static const Rule rules[] = {
     { "mpv",             NULL,       NULL,       1 << 6,        1,            1,           -1 },
 };
 
+static const char systray_app_class[] = "stalonetray";
+
 /* layout(s) */
 static const float mfact     = 0.5; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */

@@ -340,6 +340,9 @@ applyrules(Client *c)
 				c->mon = m;
 		}
 	}
+    if (strstr(class, systray_app_class)) {
+        c->issticky = 1;
+    }
 	if (ch.res_class)
 		XFree(ch.res_class);
 	if (ch.res_name)
@@ -1205,14 +1208,14 @@ grabbuttons(Client *c, int focused)
 		XUngrabButton(dpy, AnyButton, AnyModifier, c->win);
 		if (!focused)
 			XGrabButton(dpy, AnyButton, AnyModifier, c->win, False,
-				BUTTONMASK, GrabModeSync, GrabModeSync, None, None);
+				BUTTONMASK, GrabModeAsync, GrabModeSync, None, None);
 		for (i = 0; i < LENGTH(buttons); i++)
 			if (buttons[i].click == ClkClientWin)
 				for (j = 0; j < LENGTH(modifiers); j++)
 					XGrabButton(dpy, buttons[i].button,
 						buttons[i].mask | modifiers[j],
 						c->win, False, BUTTONMASK,
-						GrabModeSync, GrabModeSync, None, None);
+						GrabModeAsync, GrabModeSync, None, None);
 	}
 }
 
