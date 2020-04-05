@@ -15,10 +15,10 @@ enum showtab_modes { showtab_never, showtab_auto, showtab_nmodes, showtab_always
 static const int showtab            = showtab_auto;        /* Default tab bar show mode */
 static const int toptab             = True;               /* False means bottom tab bar */
 
-/* static const char *fonts[]     = { "terminus:lang=ru:size=9" }; */
-static const char *fonts[]     = { "cure:lang=ru:size=8" };
-static const char dmenufont[]  = "cure:lang=ru:size=8";
-/* static const char dmenufont[]  = "terminus:lang=ru:size=9"; */
+/*static const char *fonts[]     = { "cure:lang=ru:size=8" };*/
+static const char *fonts[]     = { "xos4 Terminus:lang=ru:size=8" };
+/*static const char dmenufont[]  = "cure:lang=ru:size=8";*/
+static const char dmenufont[]  = "xos4 Terminus:lang=ru:size=8";
 static const char col_gray1[]  = "#111111";
 static const char col_gray2[]  = "#222222";
 static const char col_gray3[]  = "#8b8792";
@@ -74,7 +74,7 @@ static const Rule rules[] = {
 static const char systray_app_class[] = "trayer";
 
 /* layout(s) */
-static const float mfact     = 0.5; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.45; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
