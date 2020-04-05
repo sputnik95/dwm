@@ -16,9 +16,9 @@ static const int showtab            = showtab_auto;        /* Default tab bar sh
 static const int toptab             = True;               /* False means bottom tab bar */
 
 /*static const char *fonts[]     = { "cure:lang=ru:size=8" };*/
-static const char *fonts[]     = { "xos4 Terminus:lang=ru:size=8" };
+static const char *fonts[]     = { "Terminus:lang=ru:size=8" };
 /*static const char dmenufont[]  = "cure:lang=ru:size=8";*/
-static const char dmenufont[]  = "xos4 Terminus:lang=ru:size=8";
+static const char dmenufont[]  = "Terminus:lang=ru:size=8";
 static const char col_gray1[]  = "#111111";
 static const char col_gray2[]  = "#222222";
 static const char col_gray3[]  = "#8b8792";

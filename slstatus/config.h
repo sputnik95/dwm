@@ -71,7 +71,7 @@ static const struct arg args[] = {
 	{ battery_perc,   "%s | ",           "BAT0" },
 	{ vol_perc,   "%s% | ",           "/dev/mixer" },
 	{ cpu_perc,   "%s/",           "" },
-	{ temp,     "%s°C | ",        "/sys/devices/platform/thinkpad_hwmon/hwmon/hwmon3/temp1_input" },
+	{ temp,     "%s°C | ",        "/sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input" },
 	{ keymap,   "%s | ",           "" },
 	{ datetime, "%s",           "%b %d %a \x02%R" },
 };
