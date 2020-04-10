@@ -48,6 +48,7 @@ static const Rule rules[] = {
     /* class      instance    title       tags mask     iscentered    isfloating   monitor */
     /*  common  */
     { "stalonetray",     NULL,       NULL,       1 << 1,        0,            1,           -1 },
+    { "Nm-connection-editor",NULL,   NULL,       0,             1,            1,           -1 },
     { "Viewnior",        NULL,       NULL,       0,             1,            1,           -1 },
     { "feh",             NULL,       NULL,       0,             1,            1,           -1 },
     /*  var software  */
@@ -55,11 +56,11 @@ static const Rule rules[] = {
     { "DBeaver",         NULL,       NULL,       1 << 1,        1,            0,           -1 },
     { "Postman",         NULL,       NULL,       1 << 1,        1,            0,           -1 },
     /*  web browsers  */
-    { "Firefox",         NULL,       NULL,       1 << 2,        1,            0,           -1 },
+    { "Brave-browser",   NULL,       NULL,       1 << 2,        1,            0,           -1 },
     { "Chromium",        NULL,       NULL,       1 << 2,        1,            0,           -1 },
+    { "Firefox",         NULL,       NULL,       1 << 2,        1,            0,           -1 },
     { "Pale moon",       NULL,       NULL,       1 << 2,        1,            0,           -1 },
     { "Pale moon",       NULL, "Pale Moon Preferences",1 << 2,  1,            1,           -1 },
-    { "Brave-browser",   NULL,       NULL,       1 << 2,        1,            0,           -1 },
     /*  messaging  */
     { "TelegramDesktop", NULL,       NULL,       1 << 4,        1,            0,           -1 },
     /*  documents  */
