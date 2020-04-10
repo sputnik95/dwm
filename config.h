@@ -15,10 +15,10 @@ enum showtab_modes { showtab_never, showtab_auto, showtab_nmodes, showtab_always
 static const int showtab            = showtab_auto;        /* Default tab bar show mode */
 static const int toptab             = True;               /* False means bottom tab bar */
 
-static const char *fonts[]     = { "cure:lang=ru:size=8" };
-/*static const char *fonts[]     = { "Terminus:lang=ru:size=8" };*/
-static const char dmenufont[]  = "cure:lang=ru:size=8";
-/*static const char dmenufont[]  = "Terminus:lang=ru:size=8";*/
+/*static const char *fonts[]     = { "cure:lang=ru:size=8" };*/
+static const char *fonts[]     = { "Terminus:lang=ru:size=8" };
+/*static const char dmenufont[]  = "cure:lang=ru:size=8";*/
+static const char dmenufont[]  = "Terminus:lang=ru:size=8";
 static const char col_gray1[]  = "#111111";
 static const char col_gray2[]  = "#222222";
 static const char col_gray3[]  = "#8b8792";
