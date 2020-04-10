@@ -39,11 +39,11 @@ case "$1" in
     ;;
   "screenshot_part")
     sleep 0.2
-    scrot -s ~/Pictures/screenshots/$(date +%F).png
+    scrot -s ~/Pictures/screenshots/$(date +%F_%T).png
     ;;
   "screenshot_full")
     sleep 0.2
-    scrot ~/Pictures/screenshots/$(date +%F).png
+    scrot ~/Pictures/screenshots/$(date +%F_%T).png
     ;;
   *)
     exit 1
