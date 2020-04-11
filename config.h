@@ -112,6 +112,7 @@ static const char *dmenucmd[]    = { "dmenu_run", "-m", dmenumon, "-fn", dmenufo
 static const char *termcmd[]     = { "urxvt", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "urxvt", "-title", scratchpadname, "-geometry", "120x34", NULL };
+static const char *dmenu_bri[]    = { "dwmkeys", "dmenu_brightness", NULL };
 static const char *cmusstop[]    = { "dwmkeys", "musstop", NULL };
 static const char *cmusplay[]    = { "dwmkeys", "mustoggle", NULL };
 static const char *cmusnext[]    = { "dwmkeys", "musnext", NULL };
@@ -139,7 +140,8 @@ static Key keys[] = {
     { MODKEY,                       XK_d,      spawn,          {.v = rofimenu } },
     { MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
     { MODKEY,                       XK_x,      togglescratch,  {.v = scratchpadcmd } },
-    { MODKEY,                       XK_b,      togglebar,      {0} },
+    { MODKEY,                       XK_b,      spawn,          {.v = dmenu_bri} },
+    { MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
     { MODKEY|ShiftMask,             XK_w,      tabmode,        {-1} },
     { MODKEY,                       XK_Down,   focusstack,     {.i = +1 } },
     { MODKEY,                       XK_Up,     focusstack,     {.i = -1 } },

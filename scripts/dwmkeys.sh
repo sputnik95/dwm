@@ -45,6 +45,9 @@ case "$1" in
     sleep 0.2
     scrot ~/Pictures/screenshots/$(date +%F_%T).png
     ;;
+  "dmenu_brightness")
+    echo $(cat /sys/class/backlight/acpi_video0/brightness | dmenu -i -fn "Terminus:size=8" -nb "#111111" -nf "#8b8792" -sb "#111111" -sf "#cfcfcf" -p "New brightness level: ") | sudo tee /sys/class/backlight/acpi_video0/brightness
+    ;;
   *)
     exit 1
     ;;
