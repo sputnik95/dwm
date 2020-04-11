@@ -65,13 +65,14 @@ static const struct arg args[] = {
 	/* function format          argument */
 	{ netspeed_rx, "↓ %s ",           "wlp3s0" },
 	{ netspeed_tx, "↑ %s | ",           "wlp3s0" },
-	{ wifi_essid, "%s ",           "wlp3s0" },
-	{ wifi_perc, "%s% | ",           "wlp3s0" },
+	/*{ wifi_essid, "%s ",           "wlp3s0" },
+	{ wifi_perc, "%s% | ",           "wlp3s0" },*/
 	{ battery_state,   "%s",           "BAT0" },
 	{ battery_perc,   "%s | ",           "BAT0" },
 	{ vol_perc,   "%s% | ",           "/dev/mixer" },
 	{ cpu_perc,   "%s/",           "" },
 	{ temp,     "%s°C | ",        "/sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input" },
 	{ keymap,   "%s | ",           "" },
-	{ datetime, "%s",           "%b %d %a \x02%R" },
+	/*{ datetime, "%s",           "%b %d %a \x02%R" },*/
+	{ datetime, "%s",           "%a %F \x02%R" },
 };
