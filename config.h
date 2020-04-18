@@ -80,7 +80,7 @@ static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
 #include "layouts.c"
-#include "fibonacci.c"
+/*#include "fibonacci.c"*/
 static const Layout layouts[] = {
     /* symbol     arrange function */
     { "[]=",      tile },    /* first entry is default */
@@ -137,7 +137,7 @@ static const char *wallpaper[]   = { "bash", "fehbg", "&", NULL };
 static Key keys[] = {
     /* modifier                     key        function        argument */
     { MODKEY,                       XK_e,      spawn,          {.v = dmenucmd } },
-    { MODKEY,                       XK_d,      spawn,          {.v = rofimenu } },
+    { MODKEY,                       XK_r,      spawn,          {.v = rofimenu } },
     { MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
     { MODKEY,                       XK_x,      togglescratch,  {.v = scratchpadcmd } },
     { MODKEY,                       XK_b,      spawn,          {.v = dmenu_bri} },
@@ -161,6 +161,7 @@ static Key keys[] = {
     { MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
     { MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
     { MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+    { MODKEY,                       XK_d,      setlayout,      {.v = &layouts[3]} },
     { MODKEY,                       XK_space,  setlayout,      {0} },
     { MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
     { MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
