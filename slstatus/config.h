@@ -74,6 +74,6 @@ static const struct arg args[] = {
 	{ cpu_perc,   "%s/",           "" },
 	{ temp,     "%s°C | ",        "/sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input" },
 	{ keymap,   "%s | ",           "" },
-	/*{ datetime, "%s",           "%b %d %a \x02%R" },*/
-	{ datetime, "%s",           "%a %F \x02%R" },
+	{ datetime, "%s",           "%b %d %a \x02%R" },
+	/*{ datetime, "%s",           "%a %F ^fg(#dddddd)%R" },*/
 };

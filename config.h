@@ -15,9 +15,9 @@ enum showtab_modes { showtab_never, showtab_auto, showtab_nmodes, showtab_always
 static const int showtab            = showtab_auto;        /* Default tab bar show mode */
 static const int toptab             = True;               /* False means bottom tab bar */
 
-/*static const char *fonts[]     = { "cure:lang=ru:size=8" };*/
+/*static const char *fonts[]     = { "cure:lang=ru:size=8" };
+static const char dmenufont[]  = "cure:lang=ru:size=8";*/
 static const char *fonts[]     = { "Terminus:lang=ru:size=8" };
-/*static const char dmenufont[]  = "cure:lang=ru:size=8";*/
 static const char dmenufont[]  = "Terminus:lang=ru:size=8";
 static const char col_gray1[]  = "#111111";
 static const char col_gray2[]  = "#222222";
@@ -48,6 +48,7 @@ static const Rule rules[] = {
     /* class      instance    title       tags mask     iscentered    isfloating   monitor */
     /*  common  */
     { "stalonetray",     NULL,       NULL,       1 << 1,        0,            1,           -1 },
+    { "URxvt",           "urxvt",    "vim",      0,             1,            1,           -1 },
     { "Nm-connection-editor",NULL,   NULL,       0,             1,            1,           -1 },
     { "Viewnior",        NULL,       NULL,       0,             1,            1,           -1 },
     { "feh",             NULL,       NULL,       0,             1,            1,           -1 },
@@ -122,12 +123,15 @@ static const char *brightdn[]    = { "dwmkeys", "brightdn", NULL };
 static const char *volplus[]     = { "dwmkeys", "raise", NULL };
 static const char *volminus[]    = { "dwmkeys", "lower", NULL };
 static const char *voltoggle[]   = { "dwmkeys", "mute", NULL };
-static const char *statusupdate[]= { "dwmkeys", "update", NULL };
+static const char *mictoggle[]   = { "dwmkeys", "mute_mic", NULL };
+/*static const char *statusupdate[]= { "dwmkeys", "update", NULL };*/
 static const char *sshot_full[]  = { "dwmkeys", "screenshot_full", NULL };
 static const char *sshot_part[]  = { "dwmkeys", "screenshot_part", NULL };
+static const char *rename_title[]= { "dwmkeys", "rename_title", NULL };
 static const char *screensaver[] = { "i3lockr", "--blur=75", NULL };
 static const char *screenconf[]  = { "lxrandr", NULL };
 static const char *rofimenu[]    = { "rofi", "-show", "combi", NULL };
+static const char *editor[]      = { "urxvt", "-e", "vim", NULL };
 static const char *startmenu[]   = { "bash", "/home/aezakmi/Apps/scripts/rofi/rofi-bangs.sh", NULL };
 static const char *wallpaper[]   = { "bash", "fehbg", "&", NULL };
 
@@ -136,7 +140,8 @@ static const char *wallpaper[]   = { "bash", "fehbg", "&", NULL };
 #include <X11/XF86keysym.h>
 static Key keys[] = {
     /* modifier                     key        function        argument */
-    { MODKEY,                       XK_e,      spawn,          {.v = dmenucmd } },
+    { MODKEY,                       XK_e,      spawn,          {.v = editor } },
+    { MODKEY,                       XK_a,      spawn,          {.v = rename_title } },
     { MODKEY,                       XK_r,      spawn,          {.v = rofimenu } },
     { MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
     { MODKEY,                       XK_x,      togglescratch,  {.v = scratchpadcmd } },
@@ -149,12 +154,12 @@ static Key keys[] = {
     { MODKEY,                       XK_period, incnmaster,     {.i = -1 } },
     { MODKEY|ShiftMask,             XK_comma,  cyclelayout,    {.i = -1 } },
     { MODKEY|ShiftMask,             XK_period, cyclelayout,    {.i = +1 } },
-    { MODKEY,                       XK_Left,   setmfact,       {.f = -0.01} },
-    { MODKEY,                       XK_Right,  setmfact,       {.f = +0.01} },
-    { MODKEY|ControlMask,           XK_Down,   movestack,      {.i = +1 } },
-    { MODKEY|ControlMask,           XK_Up,     movestack,      {.i = -1 } },
-    { MODKEY|ShiftMask,             XK_Down,   setcfact,       {.f = +0.25} },
-    { MODKEY|ShiftMask,             XK_Up,     setcfact,       {.f = -0.25} },
+    { MODKEY,                       XK_Left,   setmfact,       {.f = -0.008} },
+    { MODKEY,                       XK_Right,  setmfact,       {.f = +0.008} },
+    { MODKEY|ShiftMask,             XK_Down,   movestack,      {.i = +1 } },
+    { MODKEY|ShiftMask,             XK_Up,     movestack,      {.i = -1 } },
+    { MODKEY|ControlMask,           XK_Down,   setcfact,       {.f = +0.05} },
+    { MODKEY|ControlMask,           XK_Up,     setcfact,       {.f = -0.05} },
     { MODKEY,                       XK_w,      zoom,           {0} },
     { MODKEY,                       XK_Tab,    view,           {0} },
     { MODKEY,                       XK_k,      killclient,     {0} },
@@ -183,7 +188,8 @@ static Key keys[] = {
     { 0,                            0x1008ff13, spawn,   {.v = volplus } },
     { 0,                            0x1008ff11, spawn,   {.v = volminus } },
     { 0,                            0x1008ff12, spawn,   {.v = voltoggle } },
-    { 0,                            0xfe08, spawn,   {.v = statusupdate } },
+    { 0,                            0x1008ffb2, spawn,   {.v = mictoggle } },
+/*    { 0,                            0xfe08,     spawn,   {.v = statusupdate } },*/
     { 0,                            0x1008ff2d, spawn,   {.v = screensaver } },
     { 0,                            0x1008ff59, spawn,   {.v = screenconf } },
     { 0,                            0x1008ff41, spawn,   {.v = startmenu } },

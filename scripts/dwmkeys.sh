@@ -9,6 +9,9 @@ case "$1" in
   "mute")
     amixer set Master toggle >> /dev/null
     ;;
+  "mute_mic")
+    amixer set Capture toggle >> /dev/null
+    ;;
   "musprev")
     cmus-remote -r
     ;;
@@ -31,14 +34,17 @@ case "$1" in
     ;;
   "screenshot_part")
     sleep 0.2
-    scrot -s ~/Pictures/screenshots/$(date +%F_%T).png
+    maim -s ~/Pictures/screenshots/$(date +%F_%T).png
     ;;
   "screenshot_full")
     sleep 0.2
-    scrot ~/Pictures/screenshots/$(date +%F_%T).png
+    maim ~/Pictures/screenshots/$(date +%F_%T).png
     ;;
   "dmenu_brightness")
     echo $(cat /sys/class/backlight/acpi_video0/brightness | dmenu -i -fn "Terminus:size=8" -nb "#111111" -nf "#8b8792" -sb "#111111" -sf "#cfcfcf" -p "New brightness level: ") | awk '{print int(($1+5)/10) * 10}' | sudo tee /sys/class/backlight/acpi_video0/brightness
+    ;;
+  "rename_title")
+    xdotool set_window --name "$(echo $(xdotool getactivewindow getwindowname | dmenu -i -fn "Terminus:size=8" -nb "#111111" -nf "#8b8792" -sb "#111111" -sf "#cfcfcf" -p "New window title: "))" `xdotool getactivewindow`
     ;;
   *)
     exit 1
