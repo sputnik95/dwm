@@ -17,7 +17,11 @@ static const int toptab             = True;               /* False means bottom 
 
 /*static const char *fonts[]     = { "cure:lang=ru:size=8" };
 static const char dmenufont[]  = "cure:lang=ru:size=8";*/
-static const char *fonts[]     = { "Terminus:lang=ru:size=8" };
+static const char *fonts[]     = {
+    "Terminus:lang=ru:size=8",
+    "FontAwesome:lang=ru:size=8",
+};
+/*static const char *fonts[]     = { "Terminus:lang=ru:size=8" };*/
 static const char dmenufont[]  = "Terminus:lang=ru:size=8";
 static const char col_gray1[]  = "#111111";
 static const char col_gray2[]  = "#222222";
