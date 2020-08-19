@@ -66,14 +66,15 @@ static const struct arg args[] = {
 	{ netspeed_rx, "↓ %s ",           "wlp3s0" },
 	{ netspeed_tx, "↑ %s |",           "wlp3s0" },
 	{ run_command, " %s |",           "cmus-info" },
-	{ cpu_perc,   " %s/",           "" },
+	{ battery_state,   " %s",           "BAT0" },
+	{ battery_perc,   "%s ",           "BAT0" },
+	{ cpu_perc,   "| %s/",           "" },
 	{ temp,      "%s°C ",        "/sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input" },
 	/*{ wifi_essid, "%s ",           "wlp3s0" },
 	{ wifi_perc, "%s% | ",           "wlp3s0" },*/
 	{ vol_perc,   "|  %s",           "/dev/mixer" },
-	{ battery_state,   "% | %s",           "BAT0" },
-	{ battery_perc,   "%s ",           "BAT0" },
-	{ keymap,   "| %s | ",           "" },
+	{ keymap,   "% | %s | ",           "" },
 	{ datetime, "%s",           " %b %d %a \x02%R" },
+	/*{ datetime, "%s",           " %b %d %a %R" },*/
 	/*{ datetime, "%s",           "%a %F ^fg(#dddddd)%R" },*/
 };

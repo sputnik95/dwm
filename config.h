@@ -3,6 +3,10 @@
 /* appearance */
 static const unsigned int borderpx = 1; /* border pixel of windows */
 static const unsigned int snap = 20; /* snap pixel */
+static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
+static const unsigned int systrayspacing = 2;   /* systray spacing */
+static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
+static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar = 1; /* 0 means no bar */
 static const int topbar  = 1; /* 0 means bottom bar */
 /* False means using the scroll wheel on a window will not change focus */
@@ -19,7 +23,7 @@ static const int toptab             = True;               /* False means bottom 
 static const char dmenufont[]  = "cure:lang=ru:size=8";*/
 static const char *fonts[]     = {
     "Terminus:lang=ru:size=8",
-    "FontAwesome:lang=ru:size=8",
+    "FontAwesome:size=8",
 };
 /*static const char *fonts[]     = { "Terminus:lang=ru:size=8" };*/
 static const char dmenufont[]  = "Terminus:lang=ru:size=8";
@@ -64,6 +68,7 @@ static const Rule rules[] = {
     { "Brave-browser",   NULL,       NULL,       1 << 2,        1,            0,           -1 },
     { "Chromium",        NULL,       NULL,       1 << 2,        1,            0,           -1 },
     { "Firefox",         NULL,       NULL,       1 << 2,        1,            0,           -1 },
+    { "Iridium-browser", NULL,       NULL,       1 << 2,        1,            0,           -1 },
     { "Pale moon",       NULL,       NULL,       1 << 2,        1,            0,           -1 },
     { "Pale moon",       NULL, "Pale Moon Preferences",1 << 2,  1,            1,           -1 },
     /*  messaging  */
@@ -117,27 +122,27 @@ static const char *dmenucmd[]    = { "dmenu_run", "-m", dmenumon, "-fn", dmenufo
 static const char *termcmd[]     = { "urxvtc", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "urxvtc", "-title", scratchpadname, "-geometry", "120x34", NULL };
-static const char *dmenu_bri[]    = { "dwmkeys", "dmenu_brightness", NULL };
-static const char *cmusstop[]    = { "dwmkeys", "musstop", NULL };
-static const char *cmusplay[]    = { "dwmkeys", "mustoggle", NULL };
-static const char *cmusnext[]    = { "dwmkeys", "musnext", NULL };
-static const char *cmusprev[]    = { "dwmkeys", "musprev", NULL };
-static const char *brightup[]    = { "dwmkeys", "brightup", NULL };
-static const char *brightdn[]    = { "dwmkeys", "brightdn", NULL };
-static const char *volplus[]     = { "dwmkeys", "raise", NULL };
-static const char *volminus[]    = { "dwmkeys", "lower", NULL };
-static const char *voltoggle[]   = { "dwmkeys", "mute", NULL };
-static const char *mictoggle[]   = { "dwmkeys", "mute_mic", NULL };
-/*static const char *statusupdate[]= { "dwmkeys", "update", NULL };*/
-static const char *sshot_full[]  = { "dwmkeys", "screenshot_full", NULL };
-static const char *sshot_part[]  = { "dwmkeys", "screenshot_part", NULL };
-static const char *rename_title[]= { "dwmkeys", "rename_title", NULL };
-static const char *screensaver[] = { "i3lockr", "--blur=75", NULL };
+static const char *dmenu_bri[]    = { "addkeys", "dmenu_brightness", NULL };
+static const char *cmusstop[]    = { "addkeys", "musstop", NULL };
+static const char *cmusplay[]    = { "addkeys", "mustoggle", NULL };
+static const char *cmusnext[]    = { "addkeys", "musnext", NULL };
+static const char *cmusprev[]    = { "addkeys", "musprev", NULL };
+static const char *brightup[]    = { "addkeys", "brightup", NULL };
+static const char *brightdn[]    = { "addkeys", "brightdn", NULL };
+static const char *volplus[]     = { "addkeys", "raise", NULL };
+static const char *volminus[]    = { "addkeys", "lower", NULL };
+static const char *voltoggle[]   = { "addkeys", "mute", NULL };
+static const char *mictoggle[]   = { "addkeys", "mute_mic", NULL };
+/*static const char *statusupdate[]= { "addkeys", "update", NULL };*/
+static const char *sshot_full[]  = { "addkeys", "screenshot_full", NULL };
+static const char *sshot_part[]  = { "addkeys", "screenshot_part", NULL };
+static const char *rename_title[]= { "addkeys", "rename_title", NULL };
+static const char *screensaver[] = { "addkeys", "lock_screen", NULL };
 static const char *screenconf[]  = { "lxrandr", NULL };
 static const char *rofimenu[]    = { "rofi", "-show", "combi", NULL };
 static const char *editor[]      = { "urxvt", "-e", "vim", NULL };
 static const char *startmenu[]   = { "bash", "/home/aezakmi/Apps/scripts/rofi/rofi-bangs.sh", NULL };
-static const char *wallpaper[]   = { "bash", "fehbg", "&", NULL };
+static const char *wallpaper[]   = { "addkeys", "fehbg", NULL };
 
 
 #include "movestack.c"
@@ -195,6 +200,7 @@ static Key keys[] = {
     { 0,                            0x1008ffb2, spawn,   {.v = mictoggle } },
 /*    { 0,                            0xfe08,     spawn,   {.v = statusupdate } },*/
     { 0,                            0x1008ff2d, spawn,   {.v = screensaver } },
+    { MODKEY,                       XK_l,       spawn,   {.v = screensaver } },
     { 0,                            0x1008ff59, spawn,   {.v = screenconf } },
     { 0,                            0x1008ff41, spawn,   {.v = startmenu } },
     { 0,                            0x1008ff02, spawn,   {.v = brightup } },
