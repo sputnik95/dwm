@@ -98,6 +98,40 @@ diff -up dwm-6.2.1/dwm.c dwm-6.2/dwm.c
 +enum { ClkTagBar, ClkTabBar, ClkLtSymbol, ClkStatusText, ClkWinTitle,
         ClkClientWin, ClkRootWin, ClkLast }; /* clicks */
  
+ typedef union {
+@@ -111,24 +111,32 @@ typedef struct {
+ 	void (*arrange)(Monitor *);
+ } Layout;
+ 
++#define MAXTABS 50
++
+ struct Monitor {
+ 	char ltsymbol[16];
+ 	float mfact;
+ 	int nmaster;
+ 	int num;
+ 	int by;               /* bar geometry */
++	int ty;               /* tab bar geometry */
+ 	int mx, my, mw, mh;   /* screen size */
+ 	int wx, wy, ww, wh;   /* window area  */
+ 	unsigned int seltags;
+ 	unsigned int sellt;
+ 	unsigned int tagset[2];
+ 	int showbar;
++	int showtab;
+ 	int topbar;
++	int toptab;
+ 	Client *clients;
+ 	Client *sel;
+ 	Client *stack;
+ 	Monitor *next;
+ 	Window barwin;
++	Window tabwin;
++	int ntabs;
++	int tab_widths[MAXTABS];
+ 	const Layout *lt[2];
+ };
+ 
 @@ -163,12 +171,15 @@ static void detachstack(Client *c);
  static Monitor *dirtomon(int dir);
  static void drawbar(Monitor *m);

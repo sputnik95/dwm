@@ -1,8 +1,21 @@
+From ac76d998f1e70c89b313a2fea676678d511941d4 Mon Sep 17 00:00:00 2001
+From: Tobias Giess <tobias.giess@gmail.com>
+Date: Wed, 17 Jun 2020 19:13:02 +0200
+Subject: [PATCH] fix cfacts not working on stack
+
+One line got lost while porting the cfacts patch from version 6.1 to version 6.2.
+This single line caused that the cfacts patch was only working on master clients
+but not on stack clients.
+---
+ config.def.h |  3 +++
+ dwm.c        | 34 +++++++++++++++++++++++++++++++---
+ 2 files changed, 34 insertions(+), 3 deletions(-)
+
 diff --git a/config.def.h b/config.def.h
-index 7054c06..9878dbf 100644
+index 1c0b587..83910c1 100644
 --- a/config.def.h
 +++ b/config.def.h
-@@ -68,6 +68,9 @@ static Key keys[] = {
+@@ -70,6 +70,9 @@ static Key keys[] = {
  	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
  	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
  	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
@@ -13,7 +26,7 @@ index 7054c06..9878dbf 100644
  	{ MODKEY,                       XK_Tab,    view,           {0} },
  	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 diff --git a/dwm.c b/dwm.c
-index 0362114..881afe6 100644
+index 4465af1..c0ad1b3 100644
 --- a/dwm.c
 +++ b/dwm.c
 @@ -87,6 +87,7 @@ typedef struct Client Client;
@@ -24,23 +37,23 @@ index 0362114..881afe6 100644
  	int x, y, w, h;
  	int oldx, oldy, oldw, oldh;
  	int basew, baseh, incw, inch, maxw, maxh, minw, minh;
-@@ -201,6 +202,7 @@ static void setclientstate(Client *c, long state);
+@@ -200,6 +201,7 @@ static void setclientstate(Client *c, long state);
  static void setfocus(Client *c);
  static void setfullscreen(Client *c, int fullscreen);
  static void setlayout(const Arg *arg);
 +static void setcfact(const Arg *arg);
  static void setmfact(const Arg *arg);
  static void setup(void);
- static void showhide(Client *c);
-@@ -1052,6 +1054,7 @@ manage(Window w, XWindowAttributes *wa)
+ static void seturgent(Client *c, int urg);
+@@ -1029,6 +1031,7 @@ manage(Window w, XWindowAttributes *wa)
  	c->w = c->oldw = wa->width;
  	c->h = c->oldh = wa->height;
  	c->oldbw = wa->border_width;
 +	c->cfact = 1.0;
  
- 	if (c->x + WIDTH(c) > c->mon->mx + c->mon->mw)
- 		c->x = c->mon->mx + c->mon->mw - WIDTH(c);
-@@ -1528,6 +1531,23 @@ setlayout(const Arg *arg)
+ 	updatetitle(c);
+ 	if (XGetTransientForHint(dpy, w, &trans) && (t = wintoclient(trans))) {
+@@ -1511,6 +1514,23 @@ setlayout(const Arg *arg)
  		drawbar(selmon);
  }
  
@@ -61,10 +74,10 @@ index 0362114..881afe6 100644
 +	arrange(selmon);
 +}
 +
- /* arg > 1.0 will set mfact absolutly */
+ /* arg > 1.0 will set mfact absolutely */
  void
  setmfact(const Arg *arg)
-@@ -1667,9 +1687,15 @@ void
+@@ -1674,9 +1694,15 @@ void
  tile(Monitor *m)
  {
  	unsigned int i, n, h, mw, my, ty;
@@ -81,7 +94,7 @@ index 0362114..881afe6 100644
  	if (n == 0)
  		return;
  
-@@ -1679,13 +1705,15 @@ tile(Monitor *m)
+@@ -1686,13 +1712,15 @@ tile(Monitor *m)
  		mw = m->ww;
  	for (i = my = ty = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
  		if (i < m->nmaster) {
@@ -99,3 +112,6 @@ index 0362114..881afe6 100644
  		}
  }
  
+-- 
+2.27.0
+
