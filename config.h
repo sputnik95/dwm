@@ -85,6 +85,8 @@ static const Rule rules[] = {
 static const char systray_app_class[] = "trayer";
 
 /* layout(s) */
+#include "tatami.c"
+#include "grid.c"
 static const float mfact     = 0.45; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
@@ -94,8 +96,8 @@ static const Layout layouts[] = {
     { "[]=",      tile },    /* first entry is default */
     { "><>",      NULL },    /* no layout function means floating behavior */
     { "[M]",      monocle },
-    /*{ "(@)",      spiral },
-    { "[\\]",     dwindle },*/
+    { "HHH",      grid },
+    { "|+|",      tatami },
     { NULL,       NULL },
 };
 
