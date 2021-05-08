@@ -65,7 +65,8 @@ static const struct arg args[] = {
 	/* function format          argument */
 	{ netspeed_rx, "↓ %s ",           "wlp3s0" },
 	{ netspeed_tx, "↑ %s |",           "wlp3s0" },
-	{ run_command, " %s |",           "cmus-info" },
+	/*{ run_command, " %s |",           "cmus-info" },*/
+	{ run_command, " %s |",           "playerctl metadata --format '{{ artist }} - {{ title }}'" },
 	{ battery_state,   " %s",           "BAT0" },
 	{ battery_perc,   "%s ",           "BAT0" },
 	{ cpu_perc,   "| %s/",           "" },
